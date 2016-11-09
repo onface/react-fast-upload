@@ -1,8 +1,8 @@
-.upload {
+.rf-upload {
     position: relative;
     display: inherit;
 }
-.upload-input{
+.rf-upload-input{
 	opacity: 0;
     position: absolute;
     display: inherit;

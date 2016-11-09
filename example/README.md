@@ -11,19 +11,19 @@ import { render } from "react-dom" ;
 class App extends Component {
 	constructor ( props ) {
 		super()
-		this.state = {
+		this.upload_props = {
 	      action: '/',
 	      data: { a: 1, b: 2 },
 	      headers: {
 	        Authorization: 'xxxxxxx',
 	      },
 	      multiple: true,
-	      onStart: (file) => {
+	      onStart(file) {
 	        console.log('onStart', file.name);
 	        // this.refs.inner.abort(file);
 	      },
-	      onSuccess(file) {
-	        console.log('onSuccess', file);
+	      onSuccess(res) {
+	        console.log('onSuccess', res);
 	      },
 	      onProgress(step, file) {
 	        console.log('onProgress', Math.round(step.percent), file.name);
@@ -31,18 +31,16 @@ class App extends Component {
 	      onError(err) {
 	        console.log('onError', err);
 	      },
-	      css:'label'
+	      wrapClassName:'rf'
+		}
+		this.state = {
 	    }
-	}
-	change ( id ) {
-
 	}
 	render () {
 		let self = this
 		let state = this.state
-
 		return (
-			<Upload {...this.state} >
+			<Upload {...this.upload_props} >
 				<div>点击上传</div>
 				<div>就不上传</div>
 				<div>你点我啊</div>
