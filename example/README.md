@@ -12,26 +12,28 @@ class App extends Component {
 	constructor ( props ) {
 		super()
 		this.upload_props = {
-	      action: '/',
-	      data: { a: 1, b: 2 },
-	      headers: {
-	        Authorization: 'xxxxxxx',
-	      },
-	      multiple: true,
-	      onStart(file) {
-	        console.log('onStart', file.name);
-	        // this.refs.inner.abort(file);
-	      },
-	      onSuccess(res) {
-	        console.log('onSuccess', res);
-	      },
-	      onProgress(step, file) {
-	        console.log('onProgress', Math.round(step.percent), file.name);
-	      },
-	      onError(err) {
-	        console.log('onError', err);
-	      },
-	      wrapClassName:'rf'
+			name:'file',
+			clsp:'rf',
+			action: '/',
+			data: { a: 1, b: 2 },
+			headers: {
+		        Authorization: 'xxxxxxx',
+			},
+			multiple: true,
+			onStart(file) {
+		        console.log('onStart', file.name);
+		        // this.refs.inner.abort(file);
+			},
+			onSuccess(res) {
+		        console.log('onSuccess', res);
+			},
+			onProgress(step, file) {
+		        console.log('onProgress', Math.round(step.percent), file.name);
+			},
+			onError(err) {
+		        console.log('onError', err);
+			},
+			wrapClassName:'elseclassname'
 		}
 		this.state = {
 	    }
@@ -53,7 +55,7 @@ render(<App />,document.getElementById('demo'))
 
 
 ````css
-.label{
+.elseclassname{
 	background-color:rgba(0,0,0,0.2);
 }
 ````

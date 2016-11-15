@@ -1,6 +1,6 @@
 {
   "name": "react-fast-upload",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Upload",
   "main": "index.js",
   "author": "grifree",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "react": "^0.14.8",
+    "react-addons-test-utils": "^15.3.2",
     "react-dom": "^0.14.8"
   },
   "devDependencies": {
