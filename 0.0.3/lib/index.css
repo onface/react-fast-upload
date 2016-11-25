@@ -1,0 +1,19 @@
+.rf-upload {
+    position: relative;
+    display: inherit;
+    zoom:1; /* for IE6 IE7 */
+}
+.rf-upload:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content:" ";
+    clear:both;
+    height:0;
+}
+.rf-upload:hover{
+    cursor: pointer;
+}
+.rf-upload-input{
+	display: none;   
+}
