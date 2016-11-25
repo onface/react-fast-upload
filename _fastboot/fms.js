@@ -20,6 +20,7 @@ fms.run({
 fms.ajax({
 	type:'post',
 	url:'/',
+    timeout:5000,
 	res:{
 		ok:'ok',
 		err:'err'
