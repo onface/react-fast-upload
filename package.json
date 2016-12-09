@@ -26,7 +26,6 @@
   "dependencies": {
     "nd-formdata": "^3.0.1",
     "react": "^0.14.8",
-    "react-addons-test-utils": "^15.3.2",
     "react-dom": "^0.14.8"
   },
   "devDependencies": {
