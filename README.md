@@ -23,9 +23,9 @@ npm i react-fast-upload --save
 |	action	|	String	|		|	from action url	|
 |	name	|	String	|		|	file name	|
 |	type	|	String	|	file	|	file type	|	
-|	data	|	boject	|		|	other data object to post	|
+|	data	|	object	|		|	other data object to post	|
 |	headers	|	object	|		|	http headers to post, available in modern browsers	|
-|	multiple	|	Boolean	|	true	|	多文件	|
+|	~~multiple~~	|	~~Boolean~~	|	~~true~~	|	~~多文件~~	|
 |	clsp	|	String	|	rf	|	更改原有样式classname前缀	|
 |	wrapClassName	|	String	|		|	自定义样式	|
 |	onStart	|	function	|		|	start callback	|
@@ -33,19 +33,6 @@ npm i react-fast-upload --save
 |	onProgress	|	function	|		|	progress callback	|
 |	onError	|	function	|		|	error callback	|
 
-
-### ie8下
-
-|	name	|	type	|	default	|	description	|
-|------|------|------|------|
-|	action	|	String	|		|	from action url	|
-|	name	|	String	|		|	file name	|
-|	type	|	String	|	file	|	file type	|	
-|	clsp	|	String	|	rf	|	更改原有样式classname前缀	|
-|	wrapClassName	|	String	|		|	自定义样式	|
-|	onStart	|	function	|		|	start callback	|
-|	onSuccess	|	function	|		|	success callback	|
-|	onProgress	|	function	|		|	progress callback	|
 
 
 ## 📄 Usage

@@ -1,35 +1,25 @@
-.rf-upload {
+.rf-upload-ajax {
     position: relative;
-    display: inherit;
-    zoom:1; /* for IE6 IE7 */
 }
-.rf-upload:after {
-    visibility:hidden;
-    display:block;
-    font-size:0;
-    content:" ";
-    clear:both;
-    height:0;
-}
-.rf-upload:hover{
+.rf-upload-ajax:hover{
     cursor: pointer;
 }
-.rf-upload-input{
+.rf-upload-ajax-input{
 	display: none;   
 }
 
-.rf-iframe{
+.rf-upload-iframe{
     cursor: pointer;
     position: relative;
 }
-.rf-iframe-iframe{
+.rf-upload-iframe-iframe{
     width: 0px;
     height: 0px;
     position: absolute;
     filter:alpha(opacity=0);
     z-index: -10;
 }
-.rf-iframe-input{
+.rf-upload-iframe-input{
     filter:alpha(opacity=0);
     width: 0px;
     height: 0px;
