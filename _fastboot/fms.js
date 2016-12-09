@@ -19,10 +19,14 @@ fms.run({
 
 fms.ajax({
 	type:'post',
-	url:'/',
-    timeout:5000,
+	url:'/upload',
+    timeout:3000,
 	res:{
-		ok:'ok',
+		ok:{
+            data:{
+                id:'1234'
+            }
+        },
 		err:'err'
 	}
 })

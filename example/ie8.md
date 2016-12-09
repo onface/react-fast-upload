@@ -1,4 +1,4 @@
-# example
+# ie8
 
 <!-- Polyfills -->
 <!--[if lt IE 10]>
@@ -8,8 +8,8 @@
 <script src="../../_fastboot/lte-ie11.js"></script>
 <![endif]-->
 
-
 <div id="demo"></div>
+<pre id="printf"></pre>
 
 
 ````js
@@ -26,23 +26,17 @@ class App extends Component {
 			name:'file',
 			clsp:'rf',
 			action: '/upload',
-			data: { a: 1, b: 2 },
-			headers: {
-		        Authorization: 'xxxxxxx',
-			},
-			multiple: true,
 			onStart(file) {
-		        console.log('onStart', file.name);
+		        document.getElementById('printf').innerHTML +=  '\nonStart ' + file.name
 		        // this.refs.inner.abort(file);
 			},
 			onSuccess(res) {
-		        console.log('onSuccess', res);
+		        document.getElementById('printf').innerHTML +=  '\nonSuccess ' + res
+		        // alert('onSuccess')
+		        // alert(res)
 			},
 			onProgress(step, file) {
-		        console.log('onProgress', Math.round(step.percent), file.name);
-			},
-			onError(err) {
-		        console.log('onError', err);
+		        document.getElementById('printf').innerHTML +=  '\nonProgress ' + Math.round(step.percent) + ' '+ file.name
 			},
 			wrapClassName:'elseclassname'
 		}
