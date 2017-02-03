@@ -55,8 +55,6 @@ class App extends Component {
 		return (
 			<Upload {...this.upload_props} >
 				<div>点击上传</div>
-				<div>就不上传</div>
-				<div>你点我啊</div>
 			</Upload>
 		)
 	}

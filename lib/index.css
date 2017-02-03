@@ -1,16 +1,21 @@
 .rf-upload-ajax {
     position: relative;
 }
-.rf-upload-ajax:hover{
+.rf-upload-ajax-label:hover{
     cursor: pointer;
 }
 .rf-upload-ajax-input{
 	display: none;   
 }
+html .rf-upload-ajax-input--show{
+    display: block;
+}
 
 .rf-upload-iframe{
-    cursor: pointer;
     position: relative;
+}
+.rf-upload-iframe-content{
+    cursor: pointer;
 }
 .rf-upload-iframe-iframe{
     width: 0px;

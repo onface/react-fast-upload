@@ -25,7 +25,7 @@ npm i react-fast-upload --save
 |	type	|	String	|	file	|	file type	|	
 |	data	|	object	|		|	other data object to post	|
 |	headers	|	object	|		|	http headers to post, available in modern browsers	|
-|	~~multiple~~	|	~~Boolean~~	|	~~true~~	|	~~多文件, available in modern browsers~~	|
+|	~~multiple~~	|	~~Boolean~~	|	~~false~~	|	~~多文件, available in modern browsers~~	|
 |	clsp	|	String	|	rf	|	更改原有样式classname前缀	|
 |	wrapClassName	|	String	|		|	自定义样式	|
 |	onStart	|	function	|		|	start callback	|
