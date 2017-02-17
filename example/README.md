@@ -33,7 +33,8 @@ class App extends Component {
 			multiple: true,
 			onStart(file) {
 		        console.log('onStart', file.name);
-		        // this.refs.inner.abort(file);
+		        // 取消上传
+		        return false
 			},
 			onSuccess(res) {
 		        console.log('onSuccess', res);
