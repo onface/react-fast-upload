@@ -10,73 +10,20 @@
 <script src="../doc/vendor/react/0.14.8/react.js" ></script>
 <script src="../doc/vendor/react/0.14.8/react-dom.js" ></script>
 <link rel="stylesheet" href="../doc/doc.css">
-<title> test</title>
+<title> select Upload 选择-上传(分段操作)</title>
 </head>
 <body class="markdown-body" >
-<h1 id="test">test</h1>
-<div id="mocha"></div>
-
-<script src="../doc/vendor/expect.js/0.2.0/expect.js"></script>
-<script src="../doc/vendor/mocha/3.0.2/mocha.js" ></script>
-
-<script>/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+<h1 id="select-upload-">select Upload 选择-上传(分段操作)</h1>
+<!-- Polyfills -->
+<!--[if lt IE 10]>
+<script src="../../_fastboot/lt-ie10.js"></script>
+<![endif]-->
+<!--[if lte IE 11]>
+<script src="../../_fastboot/lte-ie11.js"></script>
+<![endif]-->
+<div id="demo"></div>
 
 
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	mocha.setup('bdd');
-
-/***/ }
-/******/ ]);</script>
-<!--
-markrun
-{
-    "m_lastRunThisScript": false
-}
--->
 <div class="markrun markrun--js" >
 	<div class="markrun-code" >
 		<script>/******/ (function(modules) { // webpackBootstrap
@@ -125,7 +72,7 @@ markrun
 /* 0 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -177,15 +124,118 @@ markrun
 	/* 0 */
 	/***/function (module, exports, __webpack_require__) {
 
-		'use strict';
+		"use strict";
 
-		// 在此处使用 markrun 导出模块到全局变量，供 test/**.js 使用
+		var _createClass = function () {
+			function defineProperties(target, props) {
+				for (var i = 0; i < props.length; i++) {
+					var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+				}
+			}return function (Constructor, protoProps, staticProps) {
+				if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+			};
+		}();
 
-		window._Package = __webpack_require__(1);
+		var _react = __webpack_require__(1);
+
+		var _reactDom = __webpack_require__(2);
+
+		function _classCallCheck(instance, Constructor) {
+			if (!(instance instanceof Constructor)) {
+				throw new TypeError("Cannot call a class as a function");
+			}
+		}
+
+		function _possibleConstructorReturn(self, call) {
+			if (!self) {
+				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+			}return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+		}
+
+		function _inherits(subClass, superClass) {
+			if (typeof superClass !== "function" && superClass !== null) {
+				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
+			}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+		}
+
+		var Upload = __webpack_require__(3);
+
+		var App = function (_Component) {
+			_inherits(App, _Component);
+
+			function App(props) {
+				_classCallCheck(this, App);
+
+				var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+				_this.state = {
+					demo1_files: {},
+					refLists: []
+				};
+				return _this;
+			}
+
+			_createClass(App, [{
+				key: "render",
+				value: function render() {
+					var self = this;
+					var state = this.state;
+					return __webpack_require__(1).createElement("div", null, __webpack_require__(1).createElement("h2", null), __webpack_require__(1).createElement(Upload, {
+						action: '/upload',
+						autoUpload: false,
+						showInput: true,
+						data: { a: 1, b: 2 },
+						files: self.state.demo1_files,
+						onStart: function onStart(file) {
+							console.log('onStart', file.name);
+							// this.refs.inner.abort(file);
+						},
+						onSuccess: function onSuccess(res) {
+							console.log('onSuccess', res);
+						},
+						onProgress: function onProgress(step, file) {
+							console.log('onProgress', Math.round(step.percent), file.name);
+						},
+						onError: function onError(err) {
+							console.log('onError', err);
+							alert(err);
+						},
+						waitingList: function waitingList(refLists) {
+							console.log(refLists);
+							self.setState({
+								refLists: refLists
+							});
+						}
+					}), __webpack_require__(1).createElement("button", { onClick: function onClick() {
+							var dom = self.state.refLists[0];
+							console.log(dom);
+							console.log(self.refs[dom]);
+						} }, "\u4E0A\u4F20"));
+				}
+			}]);
+
+			return App;
+		}(_react.Component);
+
+		(0, _reactDom.render)(__webpack_require__(1).createElement(App, null), document.getElementById('demo'));
 
 		/***/
 	},
 	/* 1 */
+	/***/function (module, exports) {
+
+		module.exports = React;
+
+		/***/
+	},
+	/* 2 */
+	/***/function (module, exports) {
+
+		module.exports = ReactDOM;
+
+		/***/
+	},
+	/* 3 */
 	/***/function (module, exports, __webpack_require__) {
 
 		'use strict';
@@ -193,13 +243,13 @@ markrun
 		Object.defineProperty(exports, "__esModule", {
 			value: true
 		});
-		exports["default"] = __webpack_require__(2);
+		exports["default"] = __webpack_require__(4);
 
-		module.exports = __webpack_require__(2);
+		module.exports = __webpack_require__(4);
 
 		/***/
 	},
-	/* 2 */
+	/* 4 */
 	/***/function (module, exports, __webpack_require__) {
 
 		"use strict";
@@ -218,21 +268,21 @@ markrun
 			};
 		}();
 
-		var _react = __webpack_require__(3);
+		var _react = __webpack_require__(1);
 
-		var _classnames = __webpack_require__(4);
+		var _classnames = __webpack_require__(5);
 
 		var _classnames2 = _interopRequireDefault(_classnames);
 
-		var _props = __webpack_require__(5);
+		var _props = __webpack_require__(6);
 
 		var _props2 = _interopRequireDefault(_props);
 
-		var _ajaxUpload = __webpack_require__(6);
+		var _ajaxUpload = __webpack_require__(7);
 
 		var _ajaxUpload2 = _interopRequireDefault(_ajaxUpload);
 
-		var _iframeUpload = __webpack_require__(13);
+		var _iframeUpload = __webpack_require__(14);
 
 		var _iframeUpload2 = _interopRequireDefault(_iframeUpload);
 
@@ -249,12 +299,12 @@ markrun
 		function _possibleConstructorReturn(self, call) {
 			if (!self) {
 				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-			}return call && ((typeof call === 'undefined' ? 'undefined' : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+			}return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
 		}
 
 		function _inherits(subClass, superClass) {
 			if (typeof superClass !== "function" && superClass !== null) {
-				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof2(superClass)));
+				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
 			}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 		}
 
@@ -276,7 +326,7 @@ markrun
 					var self = this;
 					var state = this.state;
 					var props = this.props;
-					return __webpack_require__(3).createElement("div", null, typeof window.FormData !== 'undefined' ? __webpack_require__(3).createElement(_ajaxUpload2["default"], props) : __webpack_require__(3).createElement(_iframeUpload2["default"], props));
+					return __webpack_require__(1).createElement("div", null, typeof window.FormData !== 'undefined' ? __webpack_require__(1).createElement(_ajaxUpload2["default"], props) : __webpack_require__(1).createElement(_iframeUpload2["default"], props));
 				}
 			}]);
 
@@ -292,14 +342,7 @@ markrun
 
 		/***/
 	},
-	/* 3 */
-	/***/function (module, exports) {
-
-		module.exports = React;
-
-		/***/
-	},
-	/* 4 */
+	/* 5 */
 	/***/function (module, exports, __webpack_require__) {
 
 		var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__; /*!
@@ -321,7 +364,7 @@ markrun
 					var arg = arguments[i];
 					if (!arg) continue;
 
-					var argType = typeof arg === 'undefined' ? 'undefined' : _typeof2(arg);
+					var argType = typeof arg === "undefined" ? "undefined" : _typeof2(arg);
 
 					if (argType === 'string' || argType === 'number') {
 						classes.push(arg);
@@ -353,12 +396,12 @@ markrun
 
 		/***/
 	},
-	/* 5 */
+	/* 6 */
 	/***/function (module, exports, __webpack_require__) {
 
 		'use strict';
 
-		var _react = __webpack_require__(3);
+		var _react = __webpack_require__(1);
 
 		var example = function example() {
 			return arguments;
@@ -444,7 +487,7 @@ markrun
 
 		/***/
 	},
-	/* 6 */
+	/* 7 */
 	/***/function (module, exports, __webpack_require__) {
 
 		"use strict";
@@ -463,25 +506,25 @@ markrun
 			};
 		}();
 
-		var _react = __webpack_require__(3);
+		var _react = __webpack_require__(1);
 
-		var _classnames = __webpack_require__(4);
+		var _classnames = __webpack_require__(5);
 
 		var _classnames2 = _interopRequireDefault(_classnames);
 
-		var _props = __webpack_require__(5);
+		var _props = __webpack_require__(6);
 
 		var _props2 = _interopRequireDefault(_props);
 
-		var _request = __webpack_require__(7);
+		var _request = __webpack_require__(8);
 
 		var _request2 = _interopRequireDefault(_request);
 
-		var _uid = __webpack_require__(8);
+		var _uid = __webpack_require__(9);
 
 		var _uid2 = _interopRequireDefault(_uid);
 
-		__webpack_require__(9);
+		__webpack_require__(10);
 
 		function _interopRequireDefault(obj) {
 			return obj && obj.__esModule ? obj : { "default": obj };
@@ -496,12 +539,12 @@ markrun
 		function _possibleConstructorReturn(self, call) {
 			if (!self) {
 				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-			}return call && ((typeof call === 'undefined' ? 'undefined' : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+			}return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
 		}
 
 		function _inherits(subClass, superClass) {
 			if (typeof superClass !== "function" && superClass !== null) {
-				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof2(superClass)));
+				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
 			}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 		}
 
@@ -642,7 +685,7 @@ markrun
 					if (props.showInput) {
 						inputClassName = inputClassName + ' ' + props.clsp + '-upload-ajax-input--show';
 					}
-					return __webpack_require__(3).createElement("div", { className: props.clsp + '-upload-ajax' }, __webpack_require__(3).createElement("input", { ref: "rfUploadInput" + state.uid,
+					return __webpack_require__(1).createElement("div", { className: props.clsp + '-upload-ajax' }, __webpack_require__(1).createElement("input", { ref: "rfUploadInput" + state.uid,
 						type: props.type,
 						name: props.name,
 						accept: props.accept,
@@ -656,7 +699,7 @@ markrun
 								props.waitingList(["rfUploadInput" + state.uid]);
 							}
 						}
-					}), __webpack_require__(3).createElement("label", { className: props.clsp + '-upload-ajax-label' + ' ' + props.wrapClassName,
+					}), __webpack_require__(1).createElement("label", { className: props.clsp + '-upload-ajax-label' + ' ' + props.wrapClassName,
 						onClick: function onClick() {
 							self.refs["rfUploadInput" + state.uid].click();
 						}
@@ -676,7 +719,7 @@ markrun
 
 		/***/
 	},
-	/* 7 */
+	/* 8 */
 	/***/function (module, exports) {
 
 		'use strict';
@@ -784,7 +827,7 @@ markrun
 
 		/***/
 	},
-	/* 8 */
+	/* 9 */
 	/***/function (module, exports) {
 
 		"use strict";
@@ -802,16 +845,16 @@ markrun
 
 		/***/
 	},
-	/* 9 */
+	/* 10 */
 	/***/function (module, exports, __webpack_require__) {
 
 		// style-loader: Adds some css to the DOM by adding a <style> tag
 
 		// load the styles
-		var content = __webpack_require__(10);
+		var content = __webpack_require__(11);
 		if (typeof content === 'string') content = [[module.id, content, '']];
 		// add the styles to the DOM
-		var update = __webpack_require__(12)(content, {});
+		var update = __webpack_require__(13)(content, {});
 		if (content.locals) module.exports = content.locals;
 		// Hot Module Replacement
 		if (false) {
@@ -831,10 +874,10 @@ markrun
 
 		/***/
 	},
-	/* 10 */
+	/* 11 */
 	/***/function (module, exports, __webpack_require__) {
 
-		exports = module.exports = __webpack_require__(11)();
+		exports = module.exports = __webpack_require__(12)();
 		// imports
 
 
@@ -846,7 +889,7 @@ markrun
 
 		/***/
 	},
-	/* 11 */
+	/* 12 */
 	/***/function (module, exports) {
 
 		/*
@@ -900,7 +943,7 @@ markrun
 
 		/***/
 	},
-	/* 12 */
+	/* 13 */
 	/***/function (module, exports, __webpack_require__) {
 
 		/*
@@ -928,7 +971,7 @@ markrun
 
 		module.exports = function (list, options) {
 			if (false) {
-				if ((typeof document === 'undefined' ? 'undefined' : _typeof2(document)) !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+				if ((typeof document === "undefined" ? "undefined" : _typeof2(document)) !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
 			}
 
 			options = options || {};
@@ -1142,7 +1185,7 @@ markrun
 
 		/***/
 	},
-	/* 13 */
+	/* 14 */
 	/***/function (module, exports, __webpack_require__) {
 
 		"use strict";
@@ -1152,9 +1195,9 @@ markrun
 		});
 
 		var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-			return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+			return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 		} : function (obj) {
-			return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+			return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 		};
 
 		var _createClass = function () {
@@ -1167,21 +1210,21 @@ markrun
 			};
 		}();
 
-		var _react = __webpack_require__(3);
+		var _react = __webpack_require__(1);
 
-		var _classnames = __webpack_require__(4);
+		var _classnames = __webpack_require__(5);
 
 		var _classnames2 = _interopRequireDefault(_classnames);
 
-		var _props = __webpack_require__(5);
+		var _props = __webpack_require__(6);
 
 		var _props2 = _interopRequireDefault(_props);
 
-		var _uid = __webpack_require__(8);
+		var _uid = __webpack_require__(9);
 
 		var _uid2 = _interopRequireDefault(_uid);
 
-		__webpack_require__(9);
+		__webpack_require__(10);
 
 		function _interopRequireDefault(obj) {
 			return obj && obj.__esModule ? obj : { "default": obj };
@@ -1196,12 +1239,12 @@ markrun
 		function _possibleConstructorReturn(self, call) {
 			if (!self) {
 				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-			}return call && ((typeof call === 'undefined' ? 'undefined' : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+			}return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
 		}
 
 		function _inherits(subClass, superClass) {
 			if (typeof superClass !== "function" && superClass !== null) {
-				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof2(superClass)));
+				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
 			}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 		}
 
@@ -1290,7 +1333,7 @@ markrun
 					var self = this;
 					var state = this.state;
 					var props = this.props;
-					return __webpack_require__(3).createElement("div", { className: props.clsp + '-upload-iframe' + ' ' + props.wrapClassName }, __webpack_require__(3).createElement("iframe", { frameBorder: "0",
+					return __webpack_require__(1).createElement("div", { className: props.clsp + '-upload-iframe' + ' ' + props.wrapClassName }, __webpack_require__(1).createElement("iframe", { frameBorder: "0",
 						id: "Iframe" + state.uid,
 						name: "Iframe" + state.uid,
 						onLoad: function onLoad() {
@@ -1321,7 +1364,7 @@ markrun
 							}
 						},
 						className: "rf-upload-iframe-iframe"
-					}), __webpack_require__(3).createElement("form", { action: props.action, target: "Iframe" + state.uid, method: "post", encType: "multipart/form-data", ref: "rfIframeForm" + state.uid }, __webpack_require__(3).createElement("input", { type: "file",
+					}), __webpack_require__(1).createElement("form", { action: props.action, target: "Iframe" + state.uid, method: "post", encType: "multipart/form-data", ref: "rfIframeForm" + state.uid }, __webpack_require__(1).createElement("input", { type: "file",
 						name: props.name,
 						id: "file" + state.uid,
 						className: "rf-upload-iframe-input",
@@ -1363,7 +1406,7 @@ markrun
 								}
 							});
 						}
-					}), __webpack_require__(3).createElement("label", { htmlFor: "file" + state.uid,
+					}), __webpack_require__(1).createElement("label", { htmlFor: "file" + state.uid,
 						className: props.clsp + '-upload-iframe-content'
 					}, props.children)));
 				}
@@ -1388,70 +1431,79 @@ markrun
 	</div>
 	<div class="markrun-pre">
 	<pre><code>
-<span class="hljs-comment">// 在此处使用 markrun 导出模块到全局变量，供 test/**.js 使用</span>
-<span class="hljs-built_in">window</span>._Package = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-fast-upload'</span>)
+
+<span class="hljs-keyword">var</span> Upload = <span class="hljs-built_in">require</span>( <span class="hljs-string">'react-fast-upload'</span> );
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span> ;
+<span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-dom"</span> ;
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+	<span class="hljs-keyword">constructor</span> ( props ) {
+		<span class="hljs-keyword">super</span>()
+		<span class="hljs-keyword">this</span>.state = {
+			<span class="hljs-attr">demo1_files</span>:{},
+			<span class="hljs-attr">refLists</span>:[]
+	    }
+	}
+	render () {
+		<span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+		<span class="hljs-keyword">let</span> state = <span class="hljs-keyword">this</span>.state
+		<span class="hljs-keyword">return</span> (
+			<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">Upload</span> {<span class="hljs-attr">...</span>{
+					<span class="hljs-attr">action:</span> '/<span class="hljs-attr">upload</span>',
+					<span class="hljs-attr">autoUpload:false</span>,
+					<span class="hljs-attr">showInput:true</span>,
+					<span class="hljs-attr">data:</span>{<span class="hljs-attr">a:1</span>,<span class="hljs-attr">b:2</span>},
+					<span class="hljs-attr">files:self.state.demo1_files</span>,
+					<span class="hljs-attr">onStart</span>(<span class="hljs-attr">file</span>) {
+				        <span class="hljs-attr">console.log</span>('<span class="hljs-attr">onStart</span>', <span class="hljs-attr">file.name</span>);
+				        // <span class="hljs-attr">this.refs.inner.abort</span>(<span class="hljs-attr">file</span>);
+					},
+					<span class="hljs-attr">onSuccess</span>(<span class="hljs-attr">res</span>) {
+				        <span class="hljs-attr">console.log</span>('<span class="hljs-attr">onSuccess</span>', <span class="hljs-attr">res</span>);
+					},
+					<span class="hljs-attr">onProgress</span>(<span class="hljs-attr">step</span>, <span class="hljs-attr">file</span>) {
+				        <span class="hljs-attr">console.log</span>('<span class="hljs-attr">onProgress</span>', <span class="hljs-attr">Math.round</span>(<span class="hljs-attr">step.percent</span>), <span class="hljs-attr">file.name</span>);
+					},
+					<span class="hljs-attr">onError</span>(<span class="hljs-attr">err</span>) {
+				        <span class="hljs-attr">console.log</span>('<span class="hljs-attr">onError</span>', <span class="hljs-attr">err</span>);
+				        <span class="hljs-attr">alert</span>(<span class="hljs-attr">err</span>)
+					},
+					<span class="hljs-attr">waitingList</span>(<span class="hljs-attr">refLists</span>){
+						<span class="hljs-attr">console.log</span>(<span class="hljs-attr">refLists</span>)
+						<span class="hljs-attr">self.setState</span>({
+							<span class="hljs-attr">refLists:refLists</span>
+						})
+					},
+				}} &gt;</span>
+				<span class="hljs-tag">&lt;/<span class="hljs-name">Upload</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(){</span>
+					<span class="hljs-attr">let</span> <span class="hljs-attr">dom</span> = <span class="hljs-string">self.state.refLists[0]</span>
+					<span class="hljs-attr">console.log</span>(<span class="hljs-attr">dom</span>)
+					<span class="hljs-attr">console.log</span>(<span class="hljs-attr">self.refs</span>[<span class="hljs-attr">dom</span>])
+				}}&gt;</span>上传<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+		)
+	}
+}
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>,document.getElementById('demo'))
+
+
+</span></code></pre>
+	</div>
+</div>
+<div class="markrun markrun--css" >
+	<div class="markrun-code" >
+		<style type="text/css" >
+</style>
+	</div>
+	<div class="markrun-pre">
+	<pre><code>
 </code></pre>
 	</div>
 </div>
-
-<script src="test.demo.js" ></script>
-
-<script>/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-
-
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	mocha.checkLeaks();
-	mocha.globals(['LiveReload']);
-	mocha.run();
-
-/***/ }
-/******/ ]);</script>
-
-<link rel="stylesheet" href="../doc/vendor/mocha/3.0.2/mocha.css">
 
 </body>
 </html>
