@@ -1,0 +1,34 @@
+.rf-upload-ajax {
+    position: relative;
+}
+.rf-upload-ajax-label:hover{
+    cursor: pointer;
+}
+.rf-upload-ajax-input{
+	display: none;
+}
+html .rf-upload-ajax-input--show{
+    display: block;
+}
+
+.rf-upload-iframe{
+    position: relative;
+}
+.rf-upload-iframe-content{
+    cursor: pointer;
+}
+.rf-upload-iframe-iframe{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    filter:alpha(opacity=0);
+    z-index: -10;
+}
+.rf-upload-iframe-input{
+    filter:alpha(opacity=0);
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    z-index: -10;
+    outline:none;
+}
